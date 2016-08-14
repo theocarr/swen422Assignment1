@@ -45,6 +45,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ButtonScript.cs" />
      <Compile Include="Assets\LeapMotion\Scripts\Attributes\CombinablePropertyAttribute.cs" />
      <Compile Include="Assets\LeapMotion\Scripts\Attributes\DisableIf.cs" />
      <Compile Include="Assets\LeapMotion\Scripts\Attributes\EnumFlags.cs" />
