@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour {
 
@@ -29,6 +30,7 @@ public class ButtonScript : MonoBehaviour {
     void buttonClicked()
     {
         print("Button is clicked");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
 
