@@ -6,7 +6,7 @@ namespace Leap.Unity {
   /// Use this component on a Game Object to allow it to be manipulated by a pinch gesture.  The component
   /// allows rotation, translation, and scale of the object (RTS).
   /// </summary>
-  public class LeapRTS : MonoBehaviour {
+  public class Grabbable : MonoBehaviour {
 
 
     public bool touchingHand = false;
