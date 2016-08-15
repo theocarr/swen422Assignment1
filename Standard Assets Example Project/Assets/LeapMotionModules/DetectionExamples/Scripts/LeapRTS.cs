@@ -59,10 +59,7 @@ namespace Leap.Unity {
     private float _defaultNearClip;
 
     void Start() {
-//      if (_pinchDetectorA == null || _pinchDetectorB == null) {
-//        Debug.LogWarning("Both Pinch Detectors of the LeapRTS component must be assigned. This component has been disabled.");
-//        enabled = false;
-//      }
+
 
       GameObject pinchControl = new GameObject("RTS Anchor");
       _anchor = pinchControl.transform;
@@ -71,8 +68,7 @@ namespace Leap.Unity {
     }
 
     void Update() {
-           // if (touchingHand)
-            //{
+ 
                 if (Input.GetKeyDown(_toggleGuiState))
                 {
                     _showGUI = !_showGUI;
@@ -88,20 +84,27 @@ namespace Leap.Unity {
                 {
                     transform.SetParent(null, true);
                 }
-
+                //If user is touching object and pinching then transform position
             if (touchingHand)
             {
-                if (_pinchDetectorA != null && _pinchDetectorA.IsPinching &&
-                    _pinchDetectorB != null && _pinchDetectorB.IsPinching)
+
+                //if the user is pinching but not pinching another object
+                if (_pinchDetectorA != null && _pinchDetectorA.IsPinching && 
+                    _pinchDetectorB != null && _pinchDetectorB.IsPinching && (_pinchDetectorA.isPinchingAnObject == gameObject.tag || _pinchDetectorA.isPinchingAnObject == "") && (_pinchDetectorB.isPinchingAnObject == gameObject.tag || _pinchDetectorB.isPinchingAnObject == ""))
                 {
+                    //set that the user is currently pinching this object
+                    _pinchDetectorB.isPinchingAnObject = gameObject.tag;
+                    _pinchDetectorA.isPinchingAnObject = gameObject.tag;
                     transformDoubleAnchor();
                 }
-                else if (_pinchDetectorA != null && _pinchDetectorA.IsPinching)
+                else if (_pinchDetectorA != null && _pinchDetectorA.IsPinching && (_pinchDetectorA.isPinchingAnObject == gameObject.tag || _pinchDetectorA.isPinchingAnObject == ""))
                 {
+                    _pinchDetectorA.isPinchingAnObject = gameObject.tag;
                     transformSingleAnchor(_pinchDetectorA);
                 }
-                else if (_pinchDetectorB != null && _pinchDetectorB.IsPinching)
+                else if (_pinchDetectorB != null && _pinchDetectorB.IsPinching && (_pinchDetectorB.isPinchingAnObject == gameObject.tag || _pinchDetectorB.isPinchingAnObject == ""))
                 {
+                    _pinchDetectorB.isPinchingAnObject = gameObject.tag;
                     transformSingleAnchor(_pinchDetectorB);
                 }
             }
@@ -110,7 +113,6 @@ namespace Leap.Unity {
                 {
                     transform.SetParent(_anchor, true);
                 }
-           // }
     }
 
     void OnGUI() {
@@ -145,7 +147,7 @@ namespace Leap.Unity {
 
       GUILayout.EndHorizontal();
     }
-
+         //transform based on location and rotation of hand
     private void transformDoubleAnchor() {
       _anchor.position = (_pinchDetectorA.Position + _pinchDetectorB.Position) / 2.0f;
 
@@ -163,12 +165,12 @@ namespace Leap.Unity {
           _anchor.LookAt(_pinchDetectorA.Position, u);
           break;
       }
-
+            //scale by the distance between the two pinch detectors
       if (_allowScale) {
         _anchor.localScale = Vector3.one * Vector3.Distance(_pinchDetectorA.Position, _pinchDetectorB.Position);
       }
     }
-
+        //transform based on location and rotation of hand
     private void transformSingleAnchor(PinchDetector singlePinch) {
       _anchor.position = singlePinch.Position;
 
@@ -192,31 +194,26 @@ namespace Leap.Unity {
 
         void OnCollisionEnter(Collision col)
         {
-            // print(col);
+            //check if user is touching this object
             if (col.gameObject.tag == "lefthand")
             {
                 touchingHand = true;
-                print("left hand1");
             }
             if (col.gameObject.tag == "righthand")
             {
                 touchingHand = true;
-                print("right hand1");
             }
         }
 
         void OnCollisionExit(Collision col)
         {
-            // print(col);
             if (col.gameObject.tag == "lefthand")
             {
                 touchingHand = false;
-                print("left hand exit");
             }
             if (col.gameObject.tag == "righthand")
             {
                 touchingHand = false;
-                print("right hand exit ");
             }
         }
     }

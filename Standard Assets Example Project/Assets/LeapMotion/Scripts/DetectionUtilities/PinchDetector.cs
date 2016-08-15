@@ -8,6 +8,8 @@ namespace Leap.Unity {
   /// </summary>
   public class PinchDetector : Detector {
     protected const float MM_TO_M = 0.001f;
+    //the object that is currently being pinched
+    public string isPinchingAnObject = "";
 
     [SerializeField]
     protected IHandModel _handModel;
@@ -58,8 +60,12 @@ namespace Leap.Unity {
       //there are some values (like LastPinchTime) that cannot
       //be updated on demand
       ensurePinchInfoUpToDate();
-           // _isPinching;
-           // print(_isPinching);
+            // _isPinching;
+            // print(_isPinching);
+            if (!_isPinching)
+            {
+                isPinchingAnObject = "";
+            }
         }
 
     /// <summary>
@@ -67,7 +73,6 @@ namespace Leap.Unity {
     /// </summary>
     public bool IsPinching {
       get {
-             //   print("TEST");
         ensurePinchInfoUpToDate();
         return _isPinching;
       }
