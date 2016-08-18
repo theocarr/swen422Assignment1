@@ -12,6 +12,7 @@ TagManager:
   - photo4
   - photo5
   - photo6
+  - Fire
   layers:
   - Default
   - TransparentFX
