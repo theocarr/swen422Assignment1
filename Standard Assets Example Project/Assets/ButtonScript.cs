@@ -29,7 +29,6 @@ public class ButtonScript : MonoBehaviour {
 
     void buttonClicked()
     {
-        print("Button is clicked");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

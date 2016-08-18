@@ -13,6 +13,9 @@ TagManager:
   - photo5
   - photo6
   - Fire
+  - refresh
+  - menu
+  - load
   layers:
   - Default
   - TransparentFX

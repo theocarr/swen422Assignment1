@@ -101,7 +101,7 @@ GameObject:
   - 114: {fileID: 54992463}
   m_Layer: 0
   m_Name: photo 2
-  m_TagString: photo1
+  m_TagString: photo2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -531,6 +531,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.005
       objectReference: {fileID: 0}
+    - target: {fileID: 191064, guid: 82997633f4f181547ba60c9f7b9430ad, type: 2}
+      propertyPath: m_TagString
+      value: load
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11412308, guid: 82997633f4f181547ba60c9f7b9430ad, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 82997633f4f181547ba60c9f7b9430ad, type: 2}
@@ -548,7 +552,7 @@ GameObject:
   - 23: {fileID: 281793602}
   m_Layer: 0
   m_Name: Menu
-  m_TagString: Untagged
+  m_TagString: menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -846,6 +850,21 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 464466, guid: 869d20cdda15af24aab9e72b5f2eec78, type: 2}
   m_PrefabInternal: {fileID: 98503025}
+--- !u!1 &808498519 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 191064, guid: 82997633f4f181547ba60c9f7b9430ad, type: 2}
+  m_PrefabInternal: {fileID: 1776183716}
+--- !u!114 &808498520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 808498519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d15110fa083e7649a089e435ac07d44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &916246129 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 188576, guid: 869d20cdda15af24aab9e72b5f2eec78, type: 2}
@@ -1877,7 +1896,12 @@ Prefab:
       propertyPath: m_Text
       value: Refresh
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 191064, guid: 82997633f4f181547ba60c9f7b9430ad, type: 2}
+      propertyPath: m_TagString
+      value: refresh
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11412308, guid: 82997633f4f181547ba60c9f7b9430ad, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 82997633f4f181547ba60c9f7b9430ad, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1829422020
@@ -1895,7 +1919,7 @@ GameObject:
   - 114: {fileID: 1829422021}
   m_Layer: 0
   m_Name: photo 4
-  m_TagString: photo1
+  m_TagString: photo4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2007,7 +2031,7 @@ GameObject:
   - 114: {fileID: 2000015505}
   m_Layer: 0
   m_Name: photo 3
-  m_TagString: photo1
+  m_TagString: photo3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

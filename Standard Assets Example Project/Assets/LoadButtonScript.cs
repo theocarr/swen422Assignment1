@@ -32,23 +32,28 @@ public class LoadButtonScript : MonoBehaviour
 
     void buttonClicked()
     {
-       
-        GameObject[] photos = new GameObject[6];
+        print("Pressed");
 
-        float x, y, z;
+        //Move the load button off screen
+        transform.Translate(-2f, 0, 0);
 
+        //Move refresh button onscreen
+        print("Before");
+        print(GameObject.FindGameObjectWithTag("refresh").transform.position.ToString());
+        GameObject.FindGameObjectWithTag("refresh").transform.Translate(2f, 0, 0);
+        print("After");
+        print(GameObject.FindGameObjectWithTag("refresh").transform.position.ToString());
+
+        //Move menu panel on screen
+        GameObject.FindGameObjectWithTag("menu").transform.Translate(2f, 0, 0);
+
+        //Iterate through images moving them on to the screen
         for (int i =1; i<7; i++)
         {
-            GameObject photo = GameObject.FindGameObjectWithTag("photo" + i.ToString());
-            x = photo.transform.position.x;
-            y = photo.transform.position.y;
-            z = photo.transform.position.z;
-            photo.transform.Translate(x+2, y, z, Camera.main.transform);
+            //Retrieve image object and move image object on screen
+            GameObject.FindGameObjectWithTag("photo" + i.ToString()).transform.Translate(-2f, 0, 0);
         }
-
-
-
-       
+        
     }
 }
 
