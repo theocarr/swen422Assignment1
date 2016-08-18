@@ -30,9 +30,9 @@ public class LoadButtonScript : MonoBehaviour
         }
     }
 
-    void buttonClicked()
+   public void buttonClicked()
     {
-        print("Pressed");
+        print("Pressed=========");
 
         //Move the load button off screen
         transform.Translate(-2f, 0, 0);

@@ -32,29 +32,8 @@ public class RefreshButtonScript : MonoBehaviour
 
     void buttonClicked()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Additive);
-        
-
-        //Move the load button off screen
-        GameObject.FindGameObjectWithTag("load").transform.Translate(2f, 0, 0);
-
-        //Move refresh button onscreen
-        print("Before");
-        print(GameObject.FindGameObjectWithTag("refresh").transform.position.ToString());
-        GameObject.FindGameObjectWithTag("refresh").transform.Translate(2f, 0, 0);
-        print("After");
-        print(GameObject.FindGameObjectWithTag("refresh").transform.position.ToString());
-
-        //Move menu panel on screen
-        GameObject.FindGameObjectWithTag("menu").transform.Translate(2f, 0, 0);
-
-        //Iterate through images moving them on to the screen
-        for (int i = 1; i < 7; i++)
-        {
-            //Retrieve image object and move image object on screen
-            GameObject.FindGameObjectWithTag("photo" + i.ToString()).transform.Translate(-2f, 0, 0);
-        }
-
+        Application.LoadLevel(1);
+    
     }
 }
 
