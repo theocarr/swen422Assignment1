@@ -2,38 +2,58 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class RefreshButtonScript : MonoBehaviour
+namespace Leap.Unity
 {
-
-    // Use this for initialization
-    void Start()
+    public class RefreshButtonScript : MonoBehaviour
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void OnCollisionEnter(Collision col)
-    {
-        // print(col);
-        if (col.gameObject.tag == "lefthand")
+        public bool touchingHand = false;
+        public PinchDetector pinchDetector1;
+        public PinchDetector pinchDetector2;
+        // Use this for initialization
+        void Start()
         {
-            buttonClicked();
-        }
-        if (col.gameObject.tag == "righthand")
-        {
-            buttonClicked();
-        }
-    }
 
-    void buttonClicked()
-    {
-        Application.LoadLevel(1);
-    
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (touchingHand && (pinchDetector1.IsPinching || pinchDetector2.IsPinching))
+            {
+                buttonClicked();
+            }
+        }
+
+        void OnCollisionEnter(Collision col)
+        {
+            // print(col);
+            if (col.gameObject.tag == "lefthand")
+            {
+                touchingHand = true;
+            }
+            if (col.gameObject.tag == "righthand")
+            {
+                touchingHand = true;
+            }
+        }
+
+        void OnCollisionExit(Collision col)
+        {
+            if (col.gameObject.tag == "lefthand")
+            {
+                touchingHand = false;
+            }
+            if (col.gameObject.tag == "righthand")
+            {
+                touchingHand = false;
+            }
+        }
+
+        void buttonClicked()
+        {
+            Application.LoadLevel(1);
+
+        }
     }
 }
 
